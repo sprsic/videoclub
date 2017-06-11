@@ -14,14 +14,14 @@ multithreaded environment accessing shared resource like db will have dirty read
 
 Main components are divided into several packages.
 **com.sprsic.entity**: contains all orm mappings for the underlying h2 database, and on the application startup the hibernate(JPA) will
-generate db schema based on the classes in the entity package.
+generate db schema based on the classes in the entity package.<br/>
 **com.sprsic.dao**: contains repository methods for accessing entities, using spring data there is no need for the implementation of 
-the methods definition because spring data is smart enough to create queries based on the method name (isn't that awesome :) ).
-**com.sprsic.model** and **com.sprsic.model.common**: contains POJOs for mapping requests/responses
-**com.sprsic.service**: contains all the business logic for the rental store
-**com.sprsic.resource**: contains endpoint mappings
-**com.sprsic.validator**: contains validators for validating input received from the client
-**com.sprsic.util**: contains  util methods
+the methods definition because spring data is smart enough to create queries based on the method name (isn't that awesome :) ).<br/>
+**com.sprsic.model** and **com.sprsic.model.common**: contains POJOs for mapping requests/responses<br/>
+**com.sprsic.service**: contains all the business logic for the rental store.<br/>
+**com.sprsic.resource**: contains endpoint mappings.<br/>
+**com.sprsic.validator**: contains validators for validating input received from the client<br/>
+**com.sprsic.util**: contains  util methods. <br/>
 
 resources folder contains application properties and also data.sql that will be inserted when application starts.
 
@@ -30,7 +30,7 @@ There are also integration test for the business logic of the rental store, but 
 There is already init db script with sql that will prepopulate db in resources/data.sql
 with employee, customer, movie, genre, movie_genre
 
-Note: There are no REST endpoints for CRUD operations movie, customer, employee, genre. Only pre-populated values can be used.
+Note: There are no REST endpoints for CRUD operations on movie, customer, employee, genre. Only pre-populated values can be used.
 
 **Endpoints** <br/>
 
