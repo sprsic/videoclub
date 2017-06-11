@@ -35,8 +35,8 @@ public class Lease {
     @ManyToOne(fetch = FetchType.LAZY)
     @PrimaryKeyJoinColumn(name = "customer_id")
     private Customer customer;
-    @PrimaryKeyJoinColumn(name = "movie_id")
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @PrimaryKeyJoinColumn(name = "lease_details_id")
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "lease")
     private List<LeaseMovie> leaseDetails;
     @PrimaryKeyJoinColumn(name = "employee_id")
     @ManyToOne(fetch = FetchType.LAZY)

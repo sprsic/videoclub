@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 
 /**
@@ -27,7 +29,11 @@ public class LeaseMovie {
     @PrimaryKeyJoinColumn(name = "movie_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Movie movie;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @PrimaryKeyJoinColumn(name = "lease_id")
+    private Lease lease;
     @Column(name = "return_date", nullable = false)
+    @Temporal(TemporalType.DATE)
     private Date returnDate;
 
     public Long getLeaseDetailsId() {
@@ -52,5 +58,13 @@ public class LeaseMovie {
 
     public void setReturnDate(Date returnDate) {
         this.returnDate = returnDate;
+    }
+
+    public Lease getLease() {
+        return lease;
+    }
+
+    public void setLease(Lease lease) {
+        this.lease = lease;
     }
 }

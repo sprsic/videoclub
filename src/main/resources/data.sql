@@ -12,3 +12,6 @@ INSERT INTO movie_genre VALUES (1, 'Action');
 INSERT INTO movie_genre VALUES (2, 'Action');
 INSERT INTO movie_genre VALUES (3, 'Action');
 
+
+
+
