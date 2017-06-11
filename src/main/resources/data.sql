@@ -5,4 +5,10 @@ INSERT INTO customer (customer_id, first_name, last_name, address_line_1, bonus_
 INSERT INTO employee (employee_id, first_name, last_name) VALUES (1, 'John', 'Doe');
 INSERT INTO genre VALUES ('Action');
 INSERT INTO movie (movie_id, name, year, movie_type) VALUES (1,'Some new movie', '2017', 'NEW_RELEASE');
+INSERT INTO movie (movie_id, name, year, movie_type) VALUES (2,'Some regular movie', '2010', 'REGULAR_FILM');
+INSERT INTO movie (movie_id, name, year, movie_type) VALUES (3,'Some old movie', '1966', 'OLD_FILM');
+
 INSERT INTO movie_genre VALUES (1, 'Action');
+INSERT INTO movie_genre VALUES (2, 'Action');
+INSERT INTO movie_genre VALUES (3, 'Action');
+
