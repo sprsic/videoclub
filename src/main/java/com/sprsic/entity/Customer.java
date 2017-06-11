@@ -34,8 +34,8 @@ public class Customer {
     @Column(name = "year_of_birth")
     @Temporal(TemporalType.DATE)
     private Date dateOfBirth;
-    @Column(name = "bonus_points")
-    private Long bonusPoints = 0L;
+    @Column(name = "bonus_points", columnDefinition = "bigint(20) default 0")
+    private Integer bonusPoints = 0;
 
     public Long getCustomerId() {
         return customerId;
@@ -83,5 +83,13 @@ public class Customer {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public Integer getBonusPoints() {
+        return bonusPoints;
+    }
+
+    public void setBonusPoints(Integer bonusPoints) {
+        this.bonusPoints = bonusPoints;
     }
 }

@@ -9,12 +9,30 @@ import java.util.List;
  * @author Sasa Prsic 11/06/2017
  */
 public class PriceCalculationModel {
-    List<MoviePriceRentModel> leasePrices;
-    BigDecimal total;
+    private List<MoviePriceRentModel> leasePrices;
+    private BigDecimal total;
+    private Long leaseId;
 
-    public PriceCalculationModel(List<MoviePriceRentModel> leasePrices, BigDecimal total) {
+    public PriceCalculationModel(List<MoviePriceRentModel> leasePrices, BigDecimal total, Long leaseId) {
         this.leasePrices = leasePrices;
         this.total = total;
+        this.leaseId = leaseId;
+    }
+
+    public void setLeasePrices(List<MoviePriceRentModel> leasePrices) {
+        this.leasePrices = leasePrices;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
+
+    public Long getLeaseId() {
+        return leaseId;
+    }
+
+    public void setLeaseId(Long leaseId) {
+        this.leaseId = leaseId;
     }
 
     public List<MoviePriceRentModel> getLeasePrices() {

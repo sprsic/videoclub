@@ -1,7 +1,7 @@
 package com.sprsic.service;
 
+import com.sprsic.model.PriceCalculationModel;
 import com.sprsic.model.common.MovieRentDetailsModel;
-import com.sprsic.model.common.PriceCalculationModel;
 import org.joda.time.DateTime;
 
 import java.util.List;
@@ -13,12 +13,30 @@ import java.util.List;
  */
 public interface ILeaseService {
 
+    /**
+     * Calculates price for a given lease.
+     *
+     * @param leaseId
+     * @return
+     */
     PriceCalculationModel calculateLeasePrice(Long leaseId);
 
-
+    /**
+     * Calculates possible surcharges.
+     *
+     * @param leaseId
+     * @return
+     */
     PriceCalculationModel calculateOverDuePrice(Long leaseId);
 
+    /**
+     * Creates a lease, also adds a bonus points to a customer and logs bonus points
+     *
+     * @param customerId
+     * @param leaseDate
+     * @param movieRentDetailsModel
+     * @param employeId
+     * @return
+     */
     PriceCalculationModel createLease(Long customerId, DateTime leaseDate, List<MovieRentDetailsModel> movieRentDetailsModel, Long employeId);
-
-
 }

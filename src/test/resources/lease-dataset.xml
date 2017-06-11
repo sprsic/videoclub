@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+
+    <customer customer_id="1" first_name="Sasa" last_name="Prsic" address_line_1="addr line 1"/>
+    <employee employee_id="1" first_name="John" last_name="Doe"/>
+
+    <genre genre_name="Action"/>
+
+    <movie movie_id="1" name="Some new movie" year="2017" movie_type="NEW_RELEASE"/>
+
+    <movie movie_id="2" name="Some old movie" year="1996" movie_type="OLD_FILM"/>
+
+    <movie movie_id="3" name="Some regular movie" year="2010" movie_type="REGULAR_FILM"/>
+
+    <movie movie_id="4" name="Matrix 11" year="2017" movie_type="NEW_RELEASE"/>
+    <movie movie_id="5" name="Spider Man" year="2006" movie_type="REGULAR_FILM"/>
+
+
+    <!--Matrix 11 (New release) 2 extra days 80 SEK-->
+    <!--Spider Man (Regular rental) 1 days 30 SEK-->
+
+
+    <movie_genre movie_id="1" genre_name="Action"/>
+
+</dataset>

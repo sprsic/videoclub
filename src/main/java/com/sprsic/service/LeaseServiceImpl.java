@@ -7,9 +7,9 @@ import com.sprsic.entity.Lease;
 import com.sprsic.entity.LeaseMovie;
 import com.sprsic.entity.Movie;
 import com.sprsic.entity.MovieType;
-import com.sprsic.model.common.MoviePriceRentModel;
+import com.sprsic.model.MoviePriceRentModel;
+import com.sprsic.model.PriceCalculationModel;
 import com.sprsic.model.common.MovieRentDetailsModel;
-import com.sprsic.model.common.PriceCalculationModel;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,16 +43,15 @@ public class LeaseServiceImpl implements ILeaseService {
     private ICustomerService customerService;
     @Autowired
     private IEmployeeService employeeService;
+    @Autowired
+    private ICustomerBonusService customerBonusService;
 
     @Override
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public PriceCalculationModel calculateLeasePrice(Long leaseId) {
-
         Lease lease = leaseDao.findOne(leaseId);
-
         Iterable<LeaseMovie> leaseMovies = lease.getLeaseDetails();
-
-        return getPriceCalculationModel(leaseMovies);
+        return getPriceCalculationModel(leaseMovies, leaseId);
     }
 
     @Override
@@ -62,9 +61,7 @@ public class LeaseServiceImpl implements ILeaseService {
         Lease lease = leaseDao.findOne(leaseId);
 
         DateTime dateOfReturn = new DateTime();
-
         List<LeaseMovie> leaseDetails = lease.getLeaseDetails();
-
         BigDecimal total = BigDecimal.ZERO;
 
         List<MoviePriceRentModel> leasePrices = new ArrayList<>(leaseDetails.size());
@@ -82,7 +79,7 @@ public class LeaseServiceImpl implements ILeaseService {
             }
         }
 
-        return new PriceCalculationModel(leasePrices, total);
+        return new PriceCalculationModel(leasePrices, total, leaseId);
     }
 
     @Override
@@ -96,13 +93,18 @@ public class LeaseServiceImpl implements ILeaseService {
         lease.setLeaseDate(leaseDate.toDate());
         List<LeaseMovie> leaseMovies = new ArrayList<>();
 
+        int bonusPoints = 0;
         for (MovieRentDetailsModel mrm : movieRentDetailsModel) {
             Movie movie = movieService.getMovie(mrm.getMovieId());
             LeaseMovie ld = new LeaseMovie();
             ld.setMovie(movie);
             ld.setReturnDate(mrm.getReturnDate());
             leaseMovies.add(ld);
+            bonusPoints += movie.getMovieType().getBonusPoints();
+            customerBonusService.createBonusLog(customerId, movie.getMovieType().getBonusPoints());
         }
+
+        customerService.updateCustomerBonusPoints(customerId, bonusPoints);
 
         lease.setLeaseDetails(leaseMovies);
         leaseDao.save(lease);
@@ -141,7 +143,7 @@ public class LeaseServiceImpl implements ILeaseService {
         return total.add(NEW_RELEASE.getRentPrice().multiply(BigDecimal.valueOf(days)));
     }
 
-    private PriceCalculationModel getPriceCalculationModel(Iterable<LeaseMovie> movies) {
+    private PriceCalculationModel getPriceCalculationModel(Iterable<LeaseMovie> movies, Long leaseId) {
         List<MoviePriceRentModel> leasePrices = new ArrayList<>();
         BigDecimal total = BigDecimal.ZERO;
         DateTime currentDate = new DateTime().withTimeAtStartOfDay();
@@ -174,6 +176,6 @@ public class LeaseServiceImpl implements ILeaseService {
         }
 
 
-        return new PriceCalculationModel(leasePrices, total);
+        return new PriceCalculationModel(leasePrices, total, leaseId);
     }
 }

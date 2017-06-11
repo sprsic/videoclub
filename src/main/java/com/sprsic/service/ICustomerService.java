@@ -10,4 +10,7 @@ import com.sprsic.entity.Customer;
 public interface ICustomerService {
 
     Customer getCustomer(Long customerId);
+
+    Customer updateCustomerBonusPoints(Long customerId, Integer bonusPoints);
+
 }
