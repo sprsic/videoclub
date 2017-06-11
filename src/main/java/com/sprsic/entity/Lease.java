@@ -1,5 +1,6 @@
 package com.sprsic.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -35,7 +36,7 @@ public class Lease {
     @PrimaryKeyJoinColumn(name = "customer_id")
     private Customer customer;
     @PrimaryKeyJoinColumn(name = "movie_id")
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private List<LeaseMovie> leaseDetails;
     @PrimaryKeyJoinColumn(name = "employee_id")
     @ManyToOne(fetch = FetchType.LAZY)
