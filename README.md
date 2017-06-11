@@ -12,7 +12,7 @@ and they are not subject of this implementation.
 In order to keep it simple there will be no keeping track of available copies of movie for rent so that in the 
 multithreaded environment accessing shared resource like db will have dirty read and write and need to be handled differently.
 
-Main components are divided into several packages.
+Main components are divided into several packages.<br/>
 **com.sprsic.entity**: contains all orm mappings for the underlying h2 database, and on the application startup the hibernate(JPA) will
 generate db schema based on the classes in the entity package.<br/>
 **com.sprsic.dao**: contains repository methods for accessing entities, using spring data there is no need for the implementation of 
@@ -23,9 +23,9 @@ the methods definition because spring data is smart enough to create queries bas
 **com.sprsic.validator**: contains validators for validating input received from the client<br/>
 **com.sprsic.util**: contains  util methods. <br/>
 
-resources folder contains application properties and also data.sql that will be inserted when application starts.
+Resources folder contains application properties and also data.sql that will be inserted when application starts.
 
-There are also integration test for the business logic of the rental store, but it needs more integration/unit tests.
+There are also integration test for the business logic of the rental store, it would be nice to have more integration/unit tests.
 
 There is already init db script with sql that will prepopulate db in resources/data.sql
 with employee, customer, movie, genre, movie_genre
