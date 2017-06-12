@@ -66,16 +66,27 @@ response body sample:
 }
 ```
 
-**http://localhost:8080/overDue/lease/2** method: GET
+**http://localhost:8080/overDue/lease/1** method: GET //calculate based on a difference of current date and return date when rented
 response body sample:
 ```javascript
 {
     "success": true,
     "message": "OK",
     "data": {
-        "leasePrices": [],
-        "total": 0,
-        "leaseId": 2
+        "leasePrices": [
+            {
+                "movieName": "Some new movie",
+                "movieType": "NEW_RELEASE",
+                "priceRent": 80
+            },
+            {
+                "movieName": "Some regular movie",
+                "movieType": "REGULAR_FILM",
+                "priceRent": 30
+            }
+        ],
+        "total": 110,
+        "leaseId": 1
     }
 }
 ```

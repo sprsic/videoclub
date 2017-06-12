@@ -12,6 +12,10 @@ INSERT INTO movie_genre VALUES (1, 'Action');
 INSERT INTO movie_genre VALUES (2, 'Action');
 INSERT INTO movie_genre VALUES (3, 'Action');
 
+insert INTO lease (lease_id, lease_date, customer_customer_id, employee_employee_id) VALUES (1, '2017-06-08', 2, 1);
+INSERT INTO lease_details (lease_details_id, movie_movie_id, return_date, lease_lease_id) VALUES (1, 1, '2017-06-10', 1);
+INSERT INTO lease_details (lease_details_id, movie_movie_id, return_date, lease_lease_id) VALUES (2, 2, '2017-06-11', 1);
+
 
 
 
