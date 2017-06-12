@@ -25,10 +25,12 @@ the methods definition because spring data is smart enough to create queries bas
 
 Resources folder contains application properties and also data.sql that will be inserted when application starts.
 
-There are also integration test for the business logic of the rental store, currently are ignored data-set (needs more data for initial import), it would be nice to have more integration/unit tests.
+There are also integration test for the business logic of the rental store, it would be nice to have more integration/unit tests.
 
 There is already init db script with sql that will prepopulate db in resources/data.sql
 with employee, customer, movie, genre, movie_genre
+
+For checking over due price with REST api, uncomment sql code in /resource/data.sql so that exists one lease in the past.
 
 Note: There are no REST endpoints for CRUD operations on movie, customer, employee, genre. Only pre-populated values can be used.
 
