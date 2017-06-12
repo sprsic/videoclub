@@ -36,7 +36,7 @@ Note: There are no REST endpoints for CRUD operations on movie, customer, employ
 
 **Endpoints** <br/>
 
-**http://localhost:8080/lease** method: POST
+**http://localhost:8080/lease** method: POST <br/>
 request body sample:
 ```javascript
 {
@@ -49,7 +49,7 @@ request body sample:
   }]
 }
 ```
-response body sample:
+<br/>response body sample:
 ```javascript
 {
     "success": true,
@@ -69,7 +69,7 @@ response body sample:
 ```
 
 **http://localhost:8080/customer/lease/1/overDueSurcharges** method: GET //calculate based on a difference of current date and return date when rented
-response body sample:
+<br/>response body sample:
 ```javascript
 {
     "success": true,
@@ -92,7 +92,7 @@ response body sample:
     }
 }
 ```
-**http://localhost:8080/customer/2/bonus** method: GET
+**http://localhost:8080/customer/2/bonus** method: GET<br/>
 response body sample:
 ```javascript
 {
@@ -105,7 +105,7 @@ response body sample:
 ```
 
 **http://localhost:8080/customer/2/bonusHistory** method: GET
-{
+<br/>
 ```javascript
 {
     "success": true,
@@ -128,5 +128,5 @@ response body sample:
     }
 }
 ```
-
+<br/>
 If you have some questions or find a bug, contact me s.prsic[at]gmail.com
