@@ -66,7 +66,7 @@ response body sample:
 }
 ```
 
-**http://localhost:8080/customer/lease/1** method: GET //calculate based on a difference of current date and return date when rented
+**http://localhost:8080/customer/lease/1/overDueSurcharges** method: GET //calculate based on a difference of current date and return date when rented
 response body sample:
 ```javascript
 {

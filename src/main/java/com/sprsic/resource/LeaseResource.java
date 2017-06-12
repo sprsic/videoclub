@@ -53,7 +53,7 @@ public class LeaseResource {
         return new SuccessJsonResponse(ResponseMsg.OK, priceCalculationModel);
     }
 
-    @RequestMapping(value = "/customer/lease/{leaseId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/customer/lease/{leaseId}/overDueSurcharges", method = RequestMethod.GET)
     public JsonResponse overDue(@PathVariable("leaseId") Long leaseId) {
 
         PriceCalculationModel priceCalculationModel = leaseService.calculateOverDuePrice(leaseId);
