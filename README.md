@@ -3,15 +3,6 @@
 
 Sample implementation of CRUD operation for some Video rental store and price calculation based on lease duration.
 
-For this implementation Spring boot will be used because it gives out off the box all that it is needed for creating web 
-application guided by  convection the over configuration with zero xml code
-with embedded tomcat container and h2 database. Purpose of this implementation is to show some basic operation of the rental 
-store price calculation and exposing some REST endpoints.
-Other configurations (like server configuration, logging, transaction configuration, hibernate configuration, connection pool...) are set on default values,
-and they are not subject of this implementation.
-In order to keep it simple there will be no keeping track of available copies of movie for rent so that in the 
-multithreaded environment accessing shared resource like db will have dirty read and write and need to be handled differently.
-
 Main components are divided into several packages.<br/>
 **com.sprsic.entity**: contains all orm mappings for the underlying h2 database, and on the application startup the hibernate(JPA) will
 generate db schema based on the classes in the entity package.<br/>
@@ -24,15 +15,6 @@ the methods definition because spring data is smart enough to create queries bas
 **com.sprsic.util**: contains  util methods. <br/>
 
 Resources folder contains application properties and also data.sql that will be inserted when application starts.
-
-There are also integration test for the business logic of the rental store, it would be nice to have more integration/unit tests.
-
-There is already init db script with sql that will prepopulate db in resources/data.sql
-with employee, customer, movie, genre, movie_genre
-
-For checking over due price with REST api, uncomment sql code in /resource/data.sql so that exists one lease in the past.
-
-Note: There are no REST endpoints for CRUD operations on movie, customer, employee, genre. Only pre-populated values can be used.
 
 **Endpoints** <br/>
 
